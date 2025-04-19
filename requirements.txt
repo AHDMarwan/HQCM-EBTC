@@ -1,0 +1,12 @@
+streamlit
+torch
+torchvision
+numpy
+Pillow
+matplotlib
+scikit-learn
+cryptography
+fpdf
+umap-learn
+joblib
+pennylane

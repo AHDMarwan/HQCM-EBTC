@@ -298,15 +298,15 @@ if uploaded_file:
         st.pyplot(fig)
     # Add user-friendly explanation
     with st.expander("🧠 UMAP Visualization", expanded=False):
-    st.markdown("""
-    The figure below shows a **UMAP (Uniform Manifold Approximation and Projection)** projection of the quantum model outputs. UMAP is a dimensionality reduction technique that allows us to visualize complex data in a lower-dimensional space (in this case, a 2D space).
-    
-    - **Colored Points**: Each point represents a sample from the training dataset. The color corresponds to the predicted class (tumor type) of that sample: **No Tumor** (Class 0), **Meningioma** (Class 1), **Glioma** (Class 2), **Pituitary Tumor** (Class 3).
-    
-    - **Your MRI Image**: The **black 'X'** represents the projection of the uploaded MRI image on the same 2D UMAP space. This helps us understand how the model views your image in relation to the other training samples. The closer the black 'X' is to other points of the same color, the more likely it belongs to that class (e.g., if it's close to other **Meningioma** points, the model is confident it could be a Meningioma).
-    
-    This visualization allows you to see how the uploaded image compares to the training data and which class (or tumor type) it most likely belongs to.
-    """)
+        st.markdown("""
+        The figure below shows a **UMAP (Uniform Manifold Approximation and Projection)** projection of the quantum model outputs. UMAP is a dimensionality reduction technique that allows us to visualize complex data in a lower-dimensional space (in this case, a 2D space).
+        
+        - **Colored Points**: Each point represents a sample from the training dataset. The color corresponds to the predicted class (tumor type) of that sample: **No Tumor** (Class 0), **Meningioma** (Class 1), **Glioma** (Class 2), **Pituitary Tumor** (Class 3).
+        
+        - **Your MRI Image**: The **black 'X'** represents the projection of the uploaded MRI image on the same 2D UMAP space. This helps us understand how the model views your image in relation to the other training samples. The closer the black 'X' is to other points of the same color, the more likely it belongs to that class (e.g., if it's close to other **Meningioma** points, the model is confident it could be a Meningioma).
+        
+        This visualization allows you to see how the uploaded image compares to the training data and which class (or tumor type) it most likely belongs to.
+        """)
 
     # Plot UMAP
     plot_umap(outputs, labels, new_output=new_image_umap)

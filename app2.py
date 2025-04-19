@@ -123,7 +123,7 @@ def load_model():
         class_number=class_number
     )
     checkpoint = torch.load(
-        "C:/Users/Pc/Downloads/HQNetPL_checkpoint_2025-03-28_22-08-26.pth",
+        "HQNetPL_checkpoint_2025-03-28_22-08-26.pth",
         map_location='cpu'
     )
     model.load_state_dict(checkpoint['model_state_dict'])

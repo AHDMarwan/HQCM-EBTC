@@ -312,3 +312,57 @@ if uploaded_file:
     plot_umap(outputs, labels, new_output=new_image_umap)
 
 
+
+    # ------------------------
+    # 🔄 Online Feedback & Online Learning
+    # ------------------------
+
+    st.markdown("### 🔁 Online Feedback & Online Learning")
+    st.info("If the predicted label is incorrect, you can correct it below. This helps the model adapt in real-time using online learning.")
+
+    user_label = st.selectbox(
+        "Correct the predicted class (optional):",
+        options=class_names,
+        index=pred_class,
+        help="Select the correct class if the model prediction is incorrect. The model will perform a one-step online update."
+    )
+
+    submit_correction = st.button("✅ Submit Correction & Update Model")
+
+    if submit_correction:
+        # Convert user label to class index
+        correct_class = class_names.index(user_label)
+        y_true_tensor = torch.tensor([correct_class], dtype=torch.long)
+
+        # Set model to train mode for online learning step
+        model.train()
+
+        # Freeze all layers except the classifier (fc1)
+        for name, param in model.named_parameters():
+            param.requires_grad = "fc1" in name
+
+        # Define the optimizer with specified hyperparameters
+        optimizer = torch.optim.AdamW(
+            filter(lambda p: p.requires_grad, model.parameters()),
+            lr=0.011,
+            weight_decay=1e-4
+        )
+
+        optimizer.zero_grad()
+
+        # Re-run the forward pass
+        output = model(img_tensor)
+        loss = F.cross_entropy(output, y_true_tensor)
+
+        # Backpropagation with gradient clipping
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+        optimizer.step()
+
+        model.eval()
+
+        st.success(f"✅ Model updated with corrected label: **{user_label}**")
+        st.info(f"Loss on correction: **{loss.item():.4f}**")
+
+
+

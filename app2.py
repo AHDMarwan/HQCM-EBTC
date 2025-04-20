@@ -221,9 +221,19 @@ if uploaded_file:
     # ------------------------
     # 🖼️ Attention Visualization
     # ------------------------
-    st.markdown("### 🔍 Attention Analysis")
-    st.write("The attention analysis helps us visualize the regions of the image that the model focuses on when making the classification decision. The attention heatmap provides insights into which parts of the image are most important for the model's decision.")
-
+    # Optional expandable info box for users
+    with st.expander("ℹ️ What does the attention map show?", expanded=True):
+        st.markdown("""
+        The **attention heatmap** shows the regions of the MRI that the model is focusing on to make its prediction.
+    
+        It includes:
+        - **Channel Attention**: Highlights which types of extracted features are most important (e.g., texture, edges).
+        - **Spatial Attention**: Shows **where** those important features appear in the image.
+    
+        Brighter areas mean higher importance. This supports interpretability and helps clinicians trust the model’s decision-making process.
+    
+        > This is based on **attention mechanisms** such as those introduced in [CBAM (Woo et al., 2018)](https://arxiv.org/abs/1807.06521) and similar models in vision tasks.
+        """)
     threshold_col, opacity_col = st.columns(2)
     with threshold_col:
         threshold = st.slider(
@@ -310,8 +320,6 @@ if uploaded_file:
 
     # Plot UMAP
     plot_umap(outputs, labels, new_output=new_image_umap)
-
-
 
     # ------------------------
     # 🔄 Online Feedback & Online Learning

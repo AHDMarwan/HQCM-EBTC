@@ -71,6 +71,57 @@ st.markdown("""<style>
 
 st.title("🧠 Quantum-Classical Brain Tumor Classifier")
 st.caption("Leveraging Quantum-enhanced Models to Accurately Classify Brain Tumor Types from MRI Scans")
+with st.expander("📚 About | Brain Tumor Awareness & Support", expanded=False):
+    st.markdown("""
+    ## 🧠 About This Application
+    This application uses a **Quantum-Classical Hybrid Neural Network** to classify MRI brain scans into four categories:
+    
+    - **No Tumor**
+    - **Meningioma**
+    - **Glioma**
+    - **Pituitary Tumor**
+    
+    The model combines traditional deep learning with quantum computing techniques to enhance diagnostic accuracy and interpretability. It aims to support radiologists, clinicians, and researchers in identifying brain tumors more effectively.
+
+    ---
+
+    ## 🧩 Symptoms and Signs of Brain Tumors
+    Recognizing early symptoms can be critical. Common signs include:
+    
+    - Persistent or worsening **headaches**
+    - **Seizures** or convulsions
+    - Changes in **vision**, such as blurred or double vision
+    - **Difficulty speaking** or understanding language
+    - Sudden **personality changes** or mood swings
+    - Problems with **balance**, **coordination**, or **motor skills**
+
+    It's important to note that symptoms may vary depending on the tumor's location and size.
+
+    ---
+
+    ## 🩺 How to Monitor Brain Health & When to Seek Help
+    Proactive health monitoring plays a key role in early detection:
+    
+    - Schedule **regular medical check-ups** and **neuroimaging scans** if you're at higher risk.
+    - **Document** and track any unusual neurological changes or symptoms.
+    - **Seek immediate medical attention** if symptoms persist or worsen over time.
+    - Early diagnosis and treatment significantly improve health outcomes and recovery prospects.
+
+    ---
+
+    ## 🖼️ Sample MRI Images
+    For reference or experimentation, you can download open-source sample brain MRI datasets from:
+    
+    - [Kaggle Brain Tumor Dataset](https://www.kaggle.com/datasets/navoneel/brain-mri-images-for-brain-tumor-detection)
+    - [The Cancer Imaging Archive (TCIA)](https://www.cancerimagingarchive.net/)
+    - [OpenNeuro Datasets](https://openneuro.org/)
+
+    These resources offer diverse, labeled data suitable for both testing and research purposes.
+
+    ---
+    **Disclaimer:** This tool is intended for educational and research use only. It is **not a substitute for professional medical diagnosis or treatment.** Always consult a licensed healthcare provider for concerns about brain health.
+    """)
+
 
 # Sidebar with expanded sections for better organization
 with st.sidebar:
